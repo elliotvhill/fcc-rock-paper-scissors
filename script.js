@@ -47,4 +47,23 @@ const showResults = (userOption) => {
     }
 }
 
-showResults('Rock')
+const resetGame = () => {
+    playerScore = 0
+    computerScore = 0
+    playerScoreSpanElement.innerText = "0"
+    computerScoreSpanElement.innerText = "0"
+    resetGameBtn.style.display = 'none'
+    optionsContainer.style.display = 'block'
+    roundResultsMsg.innerText = ""
+    winnerMsgElement.innerText = ""
+}
+
+resetGameBtn.addEventListener("click", resetGame)
+
+const rockBtn = document.getElementById("rock-btn")
+const paperBtn = document.getElementById("paper-btn")
+const scissorsBtn = document.getElementById("scissors-btn")
+
+rockBtn.addEventListener("click", showResults("Rock"))
+paperBtn.addEventListener("click", showResults("Paper"))
+scissorsBtn.addEventListener("click", showResults("Scissors"))
