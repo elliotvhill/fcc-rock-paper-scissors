@@ -1,10 +1,11 @@
+let playerScore = 0
+let computerScore = 0
+
 const getRandomComputerResult = () => {
     const options = ['Rock', 'Paper', 'Scissors']
-    let i = Math.floor(Math.random() * 2)
+    const i = Math.floor(Math.random() * options.length)
     return options[i]
-}
-
-console.log(getRandomComputerResult())
+}    
 
 const hasPlayerWonTheRound = (player, computer) => {
     if (
@@ -12,11 +13,19 @@ const hasPlayerWonTheRound = (player, computer) => {
         (player === 'Scissors' && computer === 'Paper') ||
         (player === 'Paper' && computer === 'Rock')
     ) {
+        // playerScore++
         return true
     } else {
+        // computerScore++
         return false
     }
 }
 
-console.log(hasPlayerWonTheRound('Rock', 'Scissors'))
-console.log(hasPlayerWonTheRound('Scissors', 'Rock'))
+const getRoundResults = (userOption) => {
+    const computerResult = getRandomComputerResult()
+    const roundResult = hasPlayerWonTheRound(userOption, computerResult)
+    return console.log(`Has player won? ${roundResult}`)
+}
+
+console.log(getRoundResults("Rock"));
+console.log("Player Score: ", playerScore, "Computer Score: ", computerScore);
