@@ -13,10 +13,10 @@ const getRandomComputerResult = () => {
     return options[i]
 }
 
-const hasPlayerWonTheRound = (player, computer) => {
+const hasPlayerWonTheRound = (player, computer) => { return (
     (player === 'Rock' && computer === 'Scissors') ||
         (player === 'Scissors' && computer === 'Paper') ||
-        (player === 'Paper' && computer === 'Rock')
+        (player === 'Paper' && computer === 'Rock'))
 }
 
 const getRoundResults = (userOption) => {
@@ -36,12 +36,10 @@ const showResults = (userOption) => {
     roundResultsMsg.innerText = getRoundResults(userOption)
     playerScoreSpanElement.innerText = playerScore
     computerScoreSpanElement.innerText = computerScore
-    if (playerScore === "3") {
-        winnerMsgElement.innerText = `Player has won the game!`
-        resetGameBtn.style.display = 'block'
-        optionsContainer.style.display = 'none'
-    } else {
-        winnerMsgElement.innerText = `Computer has won the game!`
+    if (playerScore === 3 || computerScore === 3) {
+        winnerMsgElement.innerText = `${
+            playerScore === 3 ? "Player" : "Computer"
+        } has won the game!`
         resetGameBtn.style.display = 'block'
         optionsContainer.style.display = 'none'
     }
@@ -64,6 +62,6 @@ const rockBtn = document.getElementById("rock-btn")
 const paperBtn = document.getElementById("paper-btn")
 const scissorsBtn = document.getElementById("scissors-btn")
 
-rockBtn.addEventListener("click", showResults("Rock"))
-paperBtn.addEventListener("click", showResults("Paper"))
-scissorsBtn.addEventListener("click", showResults("Scissors"))
+rockBtn.addEventListener("click", function (){showResults("Rock")})
+paperBtn.addEventListener("click", function (){showResults("Paper")})
+scissorsBtn.addEventListener("click", function (){showResults("Scissors")})
